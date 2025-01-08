@@ -36,7 +36,7 @@ export class AppRefactorComponent {
   ];
 
   protected siteControl = new FormControl();
-  public sessionForm$ = this.siteControl.valueChanges.pipe(
+  protected sessionForm$ = this.siteControl.valueChanges.pipe(
     map((siteId: string) => this.sites.find(s => s.siteId === Number(siteId))),
     switchMap((site: SSFSite | undefined) => this.sessionSvc.getSession(site)),
     tap((session: SSFSession | undefined) => this.sessionForm.reset(session)),
