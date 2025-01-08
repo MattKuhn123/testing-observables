@@ -1,19 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { LocalSessionService } from '../services/local-session.service';
+import { Component } from '@angular/core';
+import { LocalSessionService } from '../../../services/local-session.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SSFSite } from '../models/ssf-site.model';
+import { SSFSite } from '../../../models/ssf-site.model';
 import { CommonModule } from '@angular/common';
-import { StationsComponent } from './stations.component';
-import { AbioticComponent } from './abiotic.component';
-import { BehaviorSubject } from 'rxjs';
+import { StationsComponent } from '../../stations.component';
+import { AbioticComponent } from '../../abiotic.component';
 
 @Component({
-  selector: "app-refactor-root",
+  selector: 'app-current-root',
   standalone: true,
   imports: [ FormsModule, ReactiveFormsModule, CommonModule, StationsComponent, AbioticComponent ],
-  templateUrl: "./app.component.html",
+  templateUrl: "../app.component.html",
 })
-export class AppRefactorComponent implements OnInit {
+export class AppCurrentComponent {
   sessionForm = new FormGroup({
     station: new FormGroup({
       siteName: new FormControl(""),
@@ -23,10 +22,6 @@ export class AppRefactorComponent implements OnInit {
   });
 
   constructor(private sessionSvc: LocalSessionService) { }
-
-  ngOnInit(): void {
-    // TODO
-  }
 
   protected handleSelectSite(ssfSite: SSFSite | undefined): void {
     if (!ssfSite) {
