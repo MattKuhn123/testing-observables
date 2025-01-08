@@ -42,13 +42,9 @@ export class AppRefactorComponent implements OnInit {
   
   ngOnInit(): void {
     this.sessionForm$ = this.siteControl.valueChanges.pipe(
-      tap(() => console.log("log 1")),
       map((siteId: string) => this.sites.find(s => s.siteId === Number(siteId))),
-      tap(() => console.log("log 2")),
       switchMap((site: SSFSite | undefined) => this.sessionSvc.getSession(site)),
-      tap(() => console.log("log 3")),
       tap((session: SSFSession | undefined) => this.sessionForm.reset(session)),
-      tap(() => console.log("log 4")),
       map(() => this.sessionForm),
       startWith(this.sessionForm),
     );

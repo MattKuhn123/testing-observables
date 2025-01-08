@@ -36,14 +36,7 @@ export class AppCurrentComponent {
   constructor(private sessionSvc: LocalSessionService) { }
 
   protected handleSelectSite(ssfSite: SSFSite | undefined): void {
-    if (!ssfSite) {
-      this.sessionForm.reset();
-      return;
-    }
-
-    debugger;
     this.sessionSvc.getSession(ssfSite).subscribe(result => {
-      debugger;
       this.sessionForm.reset(result);
     });
   }
