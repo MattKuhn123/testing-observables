@@ -6,7 +6,7 @@ import { DebugElement } from '@angular/core';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideHttpClient } from '@angular/common/http';
 
-describe('AppComponent', () => {
+describe('AppCurrentComponent', () => {
   let component: AppCurrentComponent;
   let fixture: ComponentFixture<AppCurrentComponent>;
 

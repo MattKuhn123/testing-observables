@@ -1,0 +1,4 @@
+<form [formGroup]="sessionForm">
+  <app-stations (raiseSelectSite)="handleSelectSite($event)"></app-stations>
+  <app-abiotic [sessionForm]="sessionForm"></app-abiotic>
+</form>
