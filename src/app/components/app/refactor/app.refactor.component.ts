@@ -1,10 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { LocalSessionService } from '../../../services/local-session.service';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SSFSite } from '../../../models/ssf-site.model';
 import { CommonModule } from '@angular/common';
 import { AbioticRefactorComponent } from "./abiotic.refactor.component";
-import { Observable, map, startWith, switchMap, tap } from 'rxjs';
+import { map, startWith, switchMap, tap } from 'rxjs';
 import { SitesRefactorComponent } from './sites.refactor.component';
 import { SSFSession } from '../../../models/ssf-session.model';
 
@@ -19,7 +19,7 @@ import { SSFSession } from '../../../models/ssf-session.model';
 </form>
   `
 })
-export class AppRefactorComponent implements OnInit {
+export class AppRefactorComponent {
   sessionForm = new FormGroup({
     site: new FormGroup({
       siteName: new FormControl(""),
@@ -36,17 +36,13 @@ export class AppRefactorComponent implements OnInit {
   ];
 
   protected siteControl = new FormControl();
-  public sessionForm$!: Observable<FormGroup>;
+  public sessionForm$ = this.siteControl.valueChanges.pipe(
+    map((siteId: string) => this.sites.find(s => s.siteId === Number(siteId))),
+    switchMap((site: SSFSite | undefined) => this.sessionSvc.getSession(site)),
+    tap((session: SSFSession | undefined) => this.sessionForm.reset(session)),
+    map(() => this.sessionForm),
+    startWith(this.sessionForm),
+  );
   
   constructor(private sessionSvc: LocalSessionService) { }
-  
-  ngOnInit(): void {
-    this.sessionForm$ = this.siteControl.valueChanges.pipe(
-      map((siteId: string) => this.sites.find(s => s.siteId === Number(siteId))),
-      switchMap((site: SSFSite | undefined) => this.sessionSvc.getSession(site)),
-      tap((session: SSFSession | undefined) => this.sessionForm.reset(session)),
-      map(() => this.sessionForm),
-      startWith(this.sessionForm),
-    );
-  }
 }
