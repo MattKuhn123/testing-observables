@@ -17,7 +17,7 @@ import { AbioticComponent } from './abiotic.component';
 </form>
   `,
 })
-export class AppCurrentComponent implements OnInit {
+export class AppCurrentComponent {
   sessionForm = new FormGroup({
     station: new FormGroup({
       siteName: new FormControl(""),
@@ -27,14 +27,6 @@ export class AppCurrentComponent implements OnInit {
   });
 
   constructor(private sessionSvc: LocalSessionService) { }
-  
-  ngOnInit(): void {
-    // this.sessionForm$ = this.stationControl.valueChanges.pipe(
-    //   map(x => this.stations.find(y => Number(x) === y.siteId)),
-    //   switchMap(x => this.sessionSvc.getSession(x!)),
-    //   map(x => x as SSFSession)
-    // )
-  }
 
   protected handleSelectSite(ssfSite: SSFSite | undefined): void {
     if (!ssfSite) {
