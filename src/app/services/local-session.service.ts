@@ -13,7 +13,7 @@ export class LocalSessionService {
 
   getSession(site: SSFSite | undefined): Observable<SSFSession | undefined> {
     if (!site) {
-      return of();
+      return of(undefined);
     }
 
     return this.httpClient.get("/sessions.json").pipe(
