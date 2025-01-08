@@ -7,7 +7,7 @@ import { StationsComponent } from './stations.component';
 import { AbioticComponent } from './abiotic.component';
 
 @Component({
-  selector: 'app-root-current',
+  selector: 'app-current-root',
   standalone: true,
   imports: [ FormsModule, ReactiveFormsModule, CommonModule, StationsComponent, AbioticComponent ],
   template: `
