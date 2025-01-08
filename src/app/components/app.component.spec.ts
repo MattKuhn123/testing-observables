@@ -30,7 +30,7 @@ describe('AppComponent', () => {
     const options = getOptions();
     siteSelect.nativeElement.click();
     siteSelect.nativeElement.value = options[1].nativeElement.value;
-    siteSelect.nativeElement.dispatchEvent(new Event('change'));
+    siteSelect.nativeElement.dispatchEvent(new Event("change"));
     
     debugger;
     await fixture.whenStable();
