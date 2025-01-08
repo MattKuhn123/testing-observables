@@ -1,0 +1,16 @@
+[
+  {
+    "station": {
+      "siteName": "Reservoir_1",
+      "siteId": 1
+    },
+    "crewLeader": "CrewLeader_1"
+  },
+  {
+    "station": {
+      "siteName": "Reservoir_2",
+      "siteId": 2
+    },
+    "crewLeader": "CrewLeader_2"
+  }
+]
