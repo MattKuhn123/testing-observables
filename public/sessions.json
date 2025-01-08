@@ -1,13 +1,13 @@
 [
   {
-    "station": {
+    "site": {
       "siteName": "Reservoir_1",
       "siteId": 1
     },
     "crewLeader": "CrewLeader_1"
   },
   {
-    "station": {
+    "site": {
       "siteName": "Reservoir_2",
       "siteId": 2
     },
